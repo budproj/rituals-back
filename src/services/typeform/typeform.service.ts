@@ -33,10 +33,12 @@ export class TypeformService {
   async listResponses(
     formId: string,
     company?: string,
+    query?: { [key: string]: string },
   ): Promise<Typeform.API.Responses.List> {
     const response = await this.typeform.responses.list({
       uid: formId,
       query: company,
+      ...query,
     });
 
     return response;

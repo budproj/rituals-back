@@ -23,12 +23,15 @@ export class RitualsController {
   async listResponses(
     @Param('id') id: string,
     @Query('company') company: string,
+    @Query('since') since: string,
   ): Promise<Response[]> {
     if (!company) {
       return [];
     }
 
-    const remoteResponsesPromise = this.typeform.listResponses(id, company);
+    const remoteResponsesPromise = this.typeform.listResponses(id, company, {
+      since,
+    });
     const formDetailsPromise = this.typeform.getFormDetails(id);
 
     const [remoteResponses, formDetails] = await Promise.all([
@@ -66,12 +69,15 @@ export class RitualsController {
   async getAnalytics(
     @Param('id') id: string,
     @Query('company') company: string,
+    @Query('since') since: string,
   ): Promise<any[]> {
     if (!company) {
       return [];
     }
 
-    const remoteResponsesPromise = this.typeform.listResponses(id, company);
+    const remoteResponsesPromise = this.typeform.listResponses(id, company, {
+      since,
+    });
     const formDetailsPromise = this.typeform.getFormDetails(id);
 
     const [remoteResponses, formDetails] = await Promise.all([
