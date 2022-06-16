@@ -1,19 +1,16 @@
 import { Typeform } from '@typeform/api-client';
-import { FormItem } from 'src/services/typeform/form.dto';
 
 import { Form, Answer } from './ritual.dto';
 
 export const listFormsSerializer = (
   forms: Typeform.API.Forms.List['items'],
-): Form[] => {
-  return forms.map(
-    (form: FormItem): Form => ({
-      id: form.id,
-      title: form.title,
-      link: form._links.display,
-    }),
-  );
-};
+): Form[] => forms.map(listFormSerializer);
+
+export const listFormSerializer = (form: Typeform.Form): Form => ({
+  id: form.id,
+  title: form.title,
+  link: form._links.display,
+});
 
 export const listAnswerSerializer = (
   answers: Typeform.Response['answers'],

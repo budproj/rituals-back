@@ -3,6 +3,7 @@ import { Controller, Get, Query, Param } from '@nestjs/common';
 import { TypeformService } from '../services/typeform/typeform.service';
 
 import {
+  listFormSerializer,
   listFormsSerializer,
   listAnswerSerializer,
 } from './rituals.serializer';
@@ -17,6 +18,13 @@ export class RitualsController {
     const apiCharacters = await this.typeform.listForms(search);
     const characters = listFormsSerializer(apiCharacters.items);
     return characters;
+  }
+
+  @Get(':id')
+  async getFormDetail(@Param('id') id: string): Promise<Partial<Form>> {
+    const formDetail = await this.typeform.getFormDetails(id);
+    const parsedDetail = listFormSerializer(formDetail);
+    return parsedDetail;
   }
 
   @Get(':id/responses')
