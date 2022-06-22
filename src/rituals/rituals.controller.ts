@@ -55,17 +55,25 @@ export class RitualsController {
       })
       .map((response) => {
         const { fields } = formDetails;
-        const [whatsYourNameQuestion] = fields;
+        const [whatsYourNameQuestion, whatsYourEmailQuestion] = fields;
 
         const whatsYourNameAnswer = response.answers.find(
           (answer) => answer.field.id === whatsYourNameQuestion.id,
         );
         const ownerName = whatsYourNameAnswer.text;
 
+        const whatsYourEmailAnswer = response.answers.find(
+          (answer) => answer.field.id === whatsYourEmailQuestion.id,
+        );
+        const ownerEmail = whatsYourEmailAnswer
+          ? whatsYourEmailAnswer.text
+          : '';
+
         return {
           id: response.response_id,
           submitted: response.submitted_at,
           owner: ownerName,
+          ownerEmail,
           answers: listAnswerSerializer(response.answers, fields),
         };
       });
