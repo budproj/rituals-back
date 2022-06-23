@@ -55,7 +55,12 @@ export class RitualsController {
       })
       .map((response) => {
         const { fields } = formDetails;
-        const [whatsYourNameQuestion, whatsYourEmailQuestion] = fields;
+        const [
+          whatsYourNameQuestion,
+          whatsYourEmailQuestion,
+          ...otherQuestions
+        ] = fields;
+        const fieldsToConsider = [whatsYourNameQuestion, ...otherQuestions];
 
         const whatsYourNameAnswer = response.answers.find(
           (answer) => answer.field.id === whatsYourNameQuestion.id,
@@ -74,7 +79,7 @@ export class RitualsController {
           submitted: response.submitted_at,
           owner: ownerName,
           ownerEmail,
-          answers: listAnswerSerializer(response.answers, fields),
+          answers: listAnswerSerializer(response.answers, fieldsToConsider),
         };
       });
 
