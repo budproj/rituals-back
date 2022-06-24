@@ -380,7 +380,7 @@ export const checkinReply = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transi
       margin: 0;
     "
   >
-    <div class="es-wrapper-color" style="background-color: #0b0b1a; background-image: url('https://wnsbdc.stripocdn.email/content/guids/CABINET_fff26973589f9cc2960021cdc7def9ee/images/115.png'); background-size: cover;">
+    <div class="es-wrapper-color" style="background-color: #0b0b1a; background-image: url('https://app.tryrituals.com/img/email/email-fundo.png'); background-size: cover;">
       <!--[if gte mso 9]>
         <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
           <v:fill
@@ -408,7 +408,7 @@ export const checkinReply = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transi
           background-repeat: repeat;
           background-position: center top;
           background-color: #0b0b1a;
-          background-image: url('https://wnsbdc.stripocdn.email/content/guids/CABINET_fff26973589f9cc2960021cdc7def9ee/images/115.png');
+          background-image: url('https://app.tryrituals.com/img/email/email-fundo.png');
           background-size: cover;
         "
       >
@@ -582,7 +582,7 @@ export const checkinReply = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transi
                                   >
                                     <img
                                       class="adapt-img"
-                                      src="https://wnsbdc.stripocdn.email/content/guids/CABINET_fff26973589f9cc2960021cdc7def9ee/images/group_19980.png"
+                                      src="https://app.tryrituals.com/img/email/logo-vertical.png"
                                       alt
                                       style="
                                         display: block;
@@ -690,7 +690,7 @@ export const checkinReply = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transi
                                     "
                                   >
                                     <img
-                                      src="https://wnsbdc.stripocdn.email/content/guids/CABINET_fff26973589f9cc2960021cdc7def9ee/images/group_20013.png"
+                                      src="https://app.tryrituals.com/img/email/email-icone.png"
                                       alt
                                       style="
                                         display: block;
@@ -1247,7 +1247,7 @@ export const checkinReply = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transi
                                   >
                                     <img
                                       class="adapt-img"
-                                      src="https://wnsbdc.stripocdn.email/content/guids/CABINET_fff26973589f9cc2960021cdc7def9ee/images/group_19980.png"
+                                      src="https://app.tryrituals.com/img/email/logo-vertical.png"
                                       alt
                                       style="
                                         display: block;
