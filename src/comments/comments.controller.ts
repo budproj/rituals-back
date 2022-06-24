@@ -24,7 +24,7 @@ export class CommentsController {
         splittedEmail.length === 2 ? splittedEmail[1] : splittedEmail[0];
 
       const emailConfig = {
-        from: 'Try Rituals <notification@tryrituals.com>',
+        from: 'Try Rituals',
         to: userEmail,
         subject: 'Você tem um novo comentário no seu check-in!',
         text: `Você tem um novo comentário no seu check-in. ${hook.data.by_nickname}: ${hook.data.content}`,
