@@ -47,41 +47,30 @@ export class RitualsController {
       formDetailsPromise,
     ]);
 
-    const responses = remoteResponses.items
-      .filter((response) => {
-        const companyAnswer = response?.hidden?.utm_source;
-        const isAnswerFromQueriedCompany = companyAnswer === company;
-        return isAnswerFromQueriedCompany;
-      })
-      .map((response) => {
-        const { fields } = formDetails;
-        const [
-          whatsYourNameQuestion,
-          whatsYourEmailQuestion,
-          ...otherQuestions
-        ] = fields;
-        const fieldsToConsider = [whatsYourNameQuestion, ...otherQuestions];
+    const responses = remoteResponses.items.map((response) => {
+      const { fields } = formDetails;
+      const [whatsYourNameQuestion, whatsYourEmailQuestion, ...otherQuestions] =
+        fields;
+      const fieldsToConsider = [whatsYourNameQuestion, ...otherQuestions];
 
-        const whatsYourNameAnswer = response.answers.find(
-          (answer) => answer.field.id === whatsYourNameQuestion.id,
-        );
-        const ownerName = whatsYourNameAnswer.text;
+      const whatsYourNameAnswer = response.answers.find(
+        (answer) => answer.field.id === whatsYourNameQuestion.id,
+      );
+      const ownerName = whatsYourNameAnswer.text;
 
-        const whatsYourEmailAnswer = response.answers.find(
-          (answer) => answer.field.id === whatsYourEmailQuestion.id,
-        );
-        const ownerEmail = whatsYourEmailAnswer
-          ? whatsYourEmailAnswer.text
-          : '';
+      const whatsYourEmailAnswer = response.answers.find(
+        (answer) => answer.field.id === whatsYourEmailQuestion.id,
+      );
+      const ownerEmail = whatsYourEmailAnswer ? whatsYourEmailAnswer.text : '';
 
-        return {
-          id: response.response_id,
-          submitted: response.submitted_at,
-          owner: ownerName,
-          ownerEmail,
-          answers: listAnswerSerializer(response.answers, fieldsToConsider),
-        };
-      });
+      return {
+        id: response.response_id,
+        submitted: response.submitted_at,
+        owner: ownerName,
+        ownerEmail,
+        answers: listAnswerSerializer(response.answers, fieldsToConsider),
+      };
+    });
 
     return responses;
   }

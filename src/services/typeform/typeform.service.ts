@@ -35,11 +35,23 @@ export class TypeformService {
     company?: string,
     query?: { [key: string]: string },
   ): Promise<Typeform.API.Responses.List> {
-    const response = await this.typeform.responses.list({
-      uid: formId,
-      query: company,
-      ...query,
-    });
+    const response: Typeform.API.Responses.List =
+      await this.typeform.responses.list({
+        uid: formId,
+        query: company,
+        ...query,
+      });
+
+    if (company) {
+      const filteredResponses = response.items.filter(
+        (response) => response?.hidden?.utm_source === company,
+      );
+
+      return {
+        ...response,
+        items: filteredResponses,
+      };
+    }
 
     return response;
   }
